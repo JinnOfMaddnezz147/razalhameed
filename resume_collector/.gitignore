@@ -1,0 +1,16 @@
+# Django
+*.pyc
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Virtual environment
+venv/
+.env
+
+# Media (uploaded files - don't commit real resumes)
+media/
+
+# IDE / editor files
+.vscode/
+.idea/
