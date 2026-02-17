@@ -1,0 +1,39 @@
+<!-- templates/candidates/upload.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Resume Collector - Upload</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 20px; }
+        h1 { text-align: center; color: #333; }
+        form { background: #f9f9f9; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        input, textarea, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #4CAF50; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #45a049; }
+        .success { color: green; text-align: center; margin: 20px 0; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Upload Your Resume</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Resume</button>
+    </form>
+
+    <p style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'candidate_list' %}">View All Candidates</a>
+    </p>
+</body>
+</html>
